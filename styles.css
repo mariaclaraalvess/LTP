@@ -11,28 +11,63 @@ header {
     background-color: white;
     color: #9B5DE5;
     padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adicionando sombra para destacar o cabeçalho */
+}
+
+header img.logo {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+nav.menu {
+    margin-top: 10px;
+}
+
+nav.menu a {
+    color: #9B5DE5;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+}
+
+nav.menu a:hover {
+    text-decoration: underline;
 }
 
 h1 {
     margin: 0;
+    color: #9B5DE5;
+    font-size: 2rem;
 }
 
 form {
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-input, button {
+input, select {
     padding: 10px;
     font-size: 1rem;
     margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 300px; /* Limita a largura */
 }
 
 button {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
     background-color: #FEE440;
     color: #9B5DE5;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
 }
 
 button:hover {
@@ -40,10 +75,25 @@ button:hover {
     color: #FEE440;
 }
 
-#result {
+#resultado {
     margin-top: 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
 }
 
+/* Lista de resultados da tabuada */
+#resultado ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+#resultado li {
+    margin: 5px 0;
+}
+
+/* Link para navegar entre as páginas */
 .link {
     display: block;
     margin-top: 30px;
@@ -53,4 +103,13 @@ button:hover {
 
 .link:hover {
     text-decoration: underline;
+}
+
+.rectangle {
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
 }
