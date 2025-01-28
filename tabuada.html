@@ -3,25 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabuada</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tabuada e Verificação de Idade</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <h1>Veja a Tabuada</h1>
+        <img src="https://github.com/mariaclaraalvess/simplifique/blob/master/simplifique%20(5).png?raw=true" alt="Logo" class="logo">
+        <nav class="menu">
+            <a href="tela_inicial.html">Tela Inicial</a>
+            <a href="tabuada.html">Tabuada</a>
+        </nav>
     </header>
 
-    <main>
-        <form id="tabuadaForm">
-            <label for="number">Informe o número para ver a tabuada:</label>
-            <input type="number" id="number" required>
-            <button type="submit">Calcular Tabuada</button>
-        </form>
+    <main class="content">
+        <div class="rectangle">
+            <h1>Tabuada</h1>
+            <form id="tabuadaForm">
+                <label for="numero">Escolha o número:</label>
+                <input type="number" id="numero" placeholder="Digite o número" required>
 
-        <div id="tabuadaResult"></div>
-        <a href="index.html" class="link">Ir para a página de verificação de idade</a>
+                <label for="operacao">Escolha a operação:</label>
+                <select id="operacao" required>
+                    <option value="multiplicar">Multiplicar</option>
+                    <option value="dividir">Dividir</option>
+                    <option value="somar">Somar</option>
+                    <option value="subtrair">Subtrair</option>
+                </select>
+
+                <button type="button" onclick="gerarTabuada()">Calcular</button>
+            </form>
+
+            <div id="resultado" style="margin-top: 20px;"></div>
+        </div>
     </main>
 
-    <script src="tabuadaScript.js"></script>
+    <script>
+        function gerarTabuada() {
+            const numero = document.getElementById("numero").value;
+            const operacao = document.getElementById("operacao").value;
+            let resultadoHTML = `<h2>Tabuada do ${numero} - Operação: ${operacao}</h2><ul>`;
+            
+            for (let i = 1; i <= 10; i++) {
+                let resultado = 0;
+                if (operacao === "multiplicar") {
+                    resultado = numero * i;
+                } else if (operacao === "dividir") {
+                    resultado = (numero / i).toFixed(2); // Limita a 2 casas decimais
+                } else if (operacao === "somar") {
+                    resultado = +numero + i;
+                } else if (operacao === "subtrair") {
+                    resultado = numero - i;
+                }
+                
+                resultadoHTML += `<li>${numero} ${operacaoSymbol(operacao)} ${i} = ${resultado}</li>`;
+            }
+            resultadoHTML += '</ul>';
+            document.getElementById("resultado").innerHTML = resultadoHTML;
+        }
+
+        function operacaoSymbol(operacao) {
+            switch (operacao) {
+                case "multiplicar": return "x";
+                case "dividir": return "/";
+                case "somar": return "+";
+                case "subtrair": return "-";
+            }
+        }
+    </script>
 </body>
 </html>
